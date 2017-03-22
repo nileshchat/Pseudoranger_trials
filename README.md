@@ -4,6 +4,7 @@ Keras uses theano for its backend.
 
 * The X's and Y's are estimated separately. And then plotted against the jittery orbit. The results however uptill now are not satisfactory.
 * The Convolutional averaging filter performs much better as compared to the previous regression based model.
+[Convolutional Filter](/Models/conv.png)
 
 The code is still in development phase. More models are being tried.
 
