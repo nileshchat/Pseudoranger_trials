@@ -12,21 +12,25 @@ def load_data(filename):
 
 	reader = csv.reader(open(filename, "r"), delimiter = "\t")
 	data_list= list(reader)
-	x_comp = []
-	y_comp = []
+	x_true = []
+	x_noisy = []
+	y_true = []
+	y_noisy = []
 
 	for i in data_list[1:]:
-		x_comp.append(i[4])
-		y_comp.append(i[5])
+		x_true.append(i[1])
+		x_noisy.append(i[4])
+		y_true.append(i[2])
+		y_noisy.append(i[5])
 	
-	return [x_comp, y_comp]
+	return [x_true, x_noisy, y_true, y_noisy]
 '''
 Define Model
 '''
 encoding_dim = 10
-input_img = Input(shape = (3,))
+input_img = Input(shape = (1,))
 encoded = Dense(encoding_dim, activation = 'relu')(input_img)
-decoded = Dense(3, activation = 'sigmoid')(encoded)
+decoded = Dense(1, activation = 'sigmoid')(encoded)
 autoencoder = Model(input = input_img, output = decoded)
 encoder = Model(input = input_img, output = encoded)
 encoded_input = Input(shape = (encoding_dim,))
@@ -36,12 +40,13 @@ autoencoder.compile(optimizer = 'adadelta', loss = 'binary_crossentropy')
 
 data = load_data("track1489609280.csv")
 x = np.array(data[0], dtype = np.float)
-y = np.array(data[0], dtype = np.float)
-dataX = [[i] for i in x]
-dataY = [[i] for i in y]
-
-print(dataX)
-
+xn= np.array(data[1], dtype = np.float)
+y = np.array(data[2], dtype = np.float)
+yn= np.array(data[2], dtype = np.float)
+trueX = [[i] for i in x]
+noisyX = [[i] for i in xn]
+trueY = [[i] for i in y]
+noisyY = [[i] for i in yn]
 
 # x_train = x_train.astype('float32')/255 #normalization
 # x_test = x_test.astype('float32')/255
@@ -50,12 +55,12 @@ print(dataX)
 
 # print (x_train.shape)
 # print (x_test.shape)
-
-# autoencoder.fit(x_train, x_train,
-#                 nb_epoch=50,
-#                 batch_size=256,
-#                 shuffle=True,
-#                 validation_data=(x_test, x_test))
+# validation_data=(x_test, x_test)
+autoencoder.fit(noisyX, trueX,
+                nb_epoch=50,
+                batch_size=36,
+                shuffle=True,
+                )
 # encoded_imgs = encoder.predict(x_test)
 # decoded_imgs = decoder.predict(encoded_imgs)
 
