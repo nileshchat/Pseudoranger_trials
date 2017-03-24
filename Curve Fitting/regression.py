@@ -4,12 +4,12 @@ Author: Nilesh Chaturvedi
 
 Algorithm:
 Equation of an ellipse : x^2/a^2 + y^2/b^2 = 1
-						 y^2/a^2 = 1 - x^2/b^2
-						 y^2 = a^2 - (a^2/b^2)*x^2
+						 y^2/b^2 = 1 - x^2/a^2
+						 y^2 = b^2 - (b^2/a^2)*x^2
 						Let y^2 : Y
 						 	x^2 : X
-						 	a^2 : intercept
-						 	a^2/b^2 : w1
+						 	b^2 : intercept
+						 	b^2/a^2 : w1
 So the regression model : Y = intercept - w1*X						
 	
 '''
