@@ -38,15 +38,19 @@ decoded_layer = autoencoder.layers[-1]
 decoder = Model(input = encoded_input, output = decoded_layer(encoded_input))
 autoencoder.compile(optimizer = 'adadelta', loss = 'binary_crossentropy')
 
-data = load_data("track1489609280.csv")
-x = np.array(data[0], dtype = np.float)
-xn= np.array(data[1], dtype = np.float)
-y = np.array(data[2], dtype = np.float)
-yn= np.array(data[2], dtype = np.float)
+traindata = load_data("track1489609280.csv")
+x = np.array(traindata[0], dtype = np.float)
+xn= np.array(traindata[1], dtype = np.float)
+y = np.array(traindata[2], dtype = np.float)
+yn= np.array(traindata[3], dtype = np.float)
 trueX = [[i] for i in x]
 noisyX = [[i] for i in xn]
 trueY = [[i] for i in y]
 noisyY = [[i] for i in yn]
+
+testdata = load_data("testdata.csv")
+testX = np.array(traindata[1], dtype = np.float)
+testY = np.array(traindata[3], dtype = np.float)
 
 # x_train = x_train.astype('float32')/255 #normalization
 # x_test = x_test.astype('float32')/255
@@ -61,6 +65,34 @@ autoencoder.fit(noisyX, trueX,
                 batch_size=36,
                 shuffle=True,
                 )
+newX = encoder.predict(testX)
+new_X = decoder.predict(newX)
+
+autoencoder.fit(noisyY, trueY,
+                nb_epoch=50,
+                batch_size=36,
+                shuffle=True,
+                )
+newY = encoder.predict(testY)
+new_Y = decoder.predict(newX)
+
+print(new_X)
+print(new_Y)
+
+# fig = plt.figure()
+# sub1 = fig.add_subplot(221)
+# sub1.set_title('Overlapped Figure')
+# sub1.plot(testX, testY, 'b')
+# sub1.plot(new_X, new_Y, 'g')
+# sub1.legend(['Noisy Orbit', 'Filtered Orbit'])
+# sub2 = fig.add_subplot(223)
+# sub2.set_title('Filtered Orbit')
+# sub2.plot(new_X, new_Y, 'g')
+# sub2.legend(['Filtered Orbit'])
+
+# plt.tight_layout()
+# plt.show()
+
 # encoded_imgs = encoder.predict(x_test)
 # decoded_imgs = decoder.predict(encoded_imgs)
 
