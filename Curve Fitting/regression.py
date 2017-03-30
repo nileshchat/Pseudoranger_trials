@@ -15,6 +15,19 @@ def read_data(filename):
 	
 	return data
 
+def load_data(filename):
+
+    reader = csv.reader(open(filename, "r"), delimiter = "\t")
+    data_list= list(reader)
+    x_comp = []
+    y_comp = []
+
+    for i in data_list[1:]:
+        x_comp.append(i[4])
+        y_comp.append(i[5])
+    
+    return np.array(x_comp, dtype = np.float), np.array(y_comp, dtype = np.float)
+
 def fitEllipse(x,y):
     x = x[:,np.newaxis]
     y = y[:,np.newaxis]
@@ -62,14 +75,13 @@ def ellipse_angle_of_rotation2( a ):
         else:
             return np.pi/2 + np.arctan(2*b/(a-c))/2
 
-filedata = read_data("filtered_data.csv")
-X = []
-Y = []
-for row in filedata:
-	X.append(row[0])
-	Y.append(row[1])
-
-curve = fitEllipse(np.array(X), np.array(Y))
+filedata = load_data("track1489609280.csv")
+# X = []
+# Y = []
+# for row in filedata:
+# 	X.append(row[4])
+# 	Y.append(row[5])
+curve = fitEllipse(np.array(filedata[0]), np.array(filedata[1]))
 
 arc = 2
 R = np.arange(0,arc*np.pi, 0.01)
@@ -86,7 +98,7 @@ yy = center[1] + a*np.cos(R)*np.sin(angle) + b*np.sin(R)*np.cos(angle)
 print(len(xx))
 
 plt.plot(xx, yy)
-plt.plot(X, Y, 'g')
+plt.plot(filedata[0], filedata[1], 'g')
 plt.plot([0], [0], '*')
 
 plt.show()
