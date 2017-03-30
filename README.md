@@ -12,9 +12,9 @@ The Convolutional averaging filter performs much better as compared to the previ
 ## Exponential Smoothing
 The model performs exceptionally for some values of smoothing constant.
 
-|![Smoothing Rate = 1](http://pixady.com/image/niz/) | ![Smoothing Rate = 0.5](http://pixady.com/image/nj0/)|
+|![Smoothing Rate = 1](http://img.pixady.com/2017/03/168166_1_460x312.png) | ![Smoothing Rate = 0.5](http://img.pixady.com/2017/03/166047_2_460x326.png)|
 |----------------------------------------------------|------------------------------------------------------|
-|![Smoothing Rate = 0.3](http://pixady.com/image/nj1/)|![Smoothing Rate = 0.1](http://img.pixady.com/2017/03/467563_4_460x336.png)|
+|![Smoothing Rate = 0.3](http://img.pixady.com/2017/03/337461_3_460x334.png)|![Smoothing Rate = 0.1](http://img.pixady.com/2017/03/467563_4_460x336.png)|
 
 The code is still in development phase. More models are being tried.
 
