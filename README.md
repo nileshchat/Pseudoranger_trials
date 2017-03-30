@@ -14,7 +14,7 @@ The model performs exceptionally for some values of smoothing constant.
 
 |![Smoothing Rate = 1](http://pixady.com/image/niz/) | ![Smoothing Rate = 0.5](http://pixady.com/image/nj0/)|
 |----------------------------------------------------|------------------------------------------------------|
-|![Smoothing Rate = 0.3](http://pixady.com/image/nj1/)|![Smoothing Rate = 0.1](http://pixady.com/image/nj2/)|
+|![Smoothing Rate = 0.3](http://pixady.com/image/nj1/)|![Smoothing Rate = 0.1](http://img.pixady.com/2017/03/467563_4_460x336.png)|
 
 The code is still in development phase. More models are being tried.
 
