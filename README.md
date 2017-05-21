@@ -16,7 +16,5 @@ The model performs exceptionally for some values of smoothing constant.
 |----------------------------------------------------|------------------------------------------------------|
 |![Smoothing Rate = 0.3](http://img.pixady.com/2017/03/337461_3_460x334.png)|![Smoothing Rate = 0.1](http://img.pixady.com/2017/03/467563_4_460x336.png)|
 
-The code is still in development phase. More models are being tried.
-
 ## Credits
 I would like to thank @hornig for [orbit generation code](https://github.com/Nilesh4145/Pseudoranger_trials/blob/master/generate_orbit.py) which can be found in this repository -> [a03-LonePseudorangerOrbitPosition](https://github.com/aerospaceresearch/summerofcode2017/tree/master/gsoc2017/a03-LonePseudorangerOrbitPosition)
