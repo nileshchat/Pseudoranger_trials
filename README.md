@@ -1,5 +1,5 @@
 # Pseudoranger_trials
-This code was made to test various noise cancellation filters for smoothing orbital data.
+This code was made to test various noise cancellation filters for smoothing orbital data during application process of Google Summer of Code 2017.
 
 ## Linear Regression
 The X's and Y's are estimated separately. And then plotted against the jittery orbit. The results however uptill now are not satisfactory.
