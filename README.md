@@ -1,6 +1,5 @@
 # Pseudoranger_trials
-The code is incomplete for now, however the model is running fine. The model has two intermediate layers.
-Keras uses theano for its backend.
+This code was made to test various noise cancellation filters for smoothing orbital data.
 
 ## Linear Regression
 The X's and Y's are estimated separately. And then plotted against the jittery orbit. The results however uptill now are not satisfactory.
